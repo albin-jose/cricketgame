@@ -123,7 +123,14 @@ print("Use lower case letter for input")
 print("Do you want to read rules. YES or NO")
 read_rules = input()
 if read_rules == 'yes':
-	print("Rules are not added yet")
+	print("****INSTRUCTIONS*****")
+	print("1.Choose the toss - HEADS OR TAILS.\n"\
+	"2.If you win the toss choose batting or bowling.\n"\
+	"3.If you choose batting then enter runs.\n"\
+	"4.The runs should be between 0 to 6 .\n"\
+	"5.If the run entered by you and the computer are same you will get out and start bowling.\n"\
+	"6.If you choose bowling then enter the runs.\n"\
+	"7.If the run entered by you is same that of computer computer will get out and start batting.")
 print("Time for toss")
 while user_toss_check == False:
 	print("heads or tails")
