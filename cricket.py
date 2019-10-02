@@ -16,12 +16,11 @@ class player:
 			print("{} needs to take {} runs to win".format(self.name,first_batting_total_runs+1))
 		while self.out == False:
 			try:
-				print("Enter run")
-				batsman_run = int(input())
+				batsman_run = int(input("Enter run:"))
 			except ValueError:
 				print("Enter a number")
 				continue
-			if batsman_run < 0 or batsman_run > 6:
+			if batsman_run not in run_list:
 				print("Invalid input\nEnter runs between 0 and 6")
 				continue
 			bowler_bowl = random.choice(self.run_list)
@@ -68,12 +67,11 @@ class player:
 			print("{} needs to take {} runs to win".format(opponent.name,first_batting_total_runs+1))
 		while self.out == False:
 			try:
-				print("Enter run")
-				bowler_bowl = int(input())
+				bowler_bowl = int(input("Enter run:"))
 			except ValueError:
 				print("Enter a number")
 				continue
-			if bowler_bowl < 0 or bowler_bowl > 6:
+			if bowler_bowl not in run_list:
 				print("Invalid input\nEnter runs between 0 and 6")
 				continue
 			batsman_run = random.choice(opponent.run_list)
@@ -133,16 +131,16 @@ if read_rules == 'yes':
 	"7.If the run entered by you is same that of computer computer will get out and start batting.")
 print("Time for toss")
 while user_toss_check == False:
-	print("heads or tails")
+	user_toss = input("Heads or Tails:")
+	user_toss=user_toss.lower()
 	toss = random.choice(toss_list)
-	user_toss = input()
 	if user_toss == 'heads' or user_toss == 'tails':
 		user_toss_check = True
 		if user_toss == toss:
 			print("you won the toss")
 			while user_choice_check == False:
-				print("batting or bowling")
-				user_choice = input()
+				user_choice = input("Batting or Bowling:")
+				user_choice=user_choice.lower()
 				if user_choice == 'batting' or user_choice == 'bowling':
 					user_choice_check = True
 					if user_choice == 'batting':
@@ -152,7 +150,8 @@ while user_toss_check == False:
 						print("You choose to bowl")
 						user.bowling(comp,0,'user','computer',1)
 				else:
-					print("Invalid input\nPlease check if the input is in lower case or not,If not please change to lower case")
+					print("Invalid input\nPlease check if the input is in lower case or not,"\
+						"If not please change to lower case")
 		else:
 			print("You lost the toss")
 			comp_choice = random.choice(choice_list)
@@ -163,4 +162,5 @@ while user_toss_check == False:
 				print("Computer chooses bowling\nYou need to bat first")
 				user.batting(comp,0,'user','computer',1)
 	else:
-		print("Invalid input\nPlease check if the input is in lower case or not,If not please change to lower case")
+		print("Invalid input\nPlease check if the input is in lower case or not,"\
+			"If not please change to lower case")
